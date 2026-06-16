@@ -1,0 +1,18 @@
+.dashboard-card {
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 2rem;
+
+  text-align: center;
+
+  box-shadow:
+  0 8px 25px rgba(0,0,0,.08);
+}
+
+.dashboard-card h2{
+  color:#2563eb;
+  font-size:2rem;
+}

@@ -1,0 +1,109 @@
+.edit-material-page {
+
+  min-height: 100vh;
+
+  background: #f8fafc;
+
+  padding: 2rem;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+}
+
+.edit-material-card {
+
+  width: 100%;
+
+  max-width: 700px;
+
+  background: white;
+
+  padding: 2rem;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+}
+
+.edit-material-card h1 {
+
+  color: #2563eb;
+
+  margin-bottom: 1.5rem;
+}
+
+.edit-material-form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+.edit-material-form input,
+.edit-material-form textarea,
+.edit-material-form select {
+
+  padding: 12px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  font-size: 1rem;
+}
+
+.edit-material-form textarea {
+
+  resize: vertical;
+
+  min-height: 120px;
+}
+
+.edit-material-form h1 {
+
+  color: #2563eb;
+}
+
+.save-btn {
+
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: .2s;
+}
+
+.save-btn:hover {
+
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+
+  .edit-material-page {
+
+    padding: 1rem;
+  }
+
+  .edit-material-card {
+
+    padding: 1.5rem;
+  }
+
+}

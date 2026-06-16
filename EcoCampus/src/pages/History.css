@@ -1,0 +1,29 @@
+.history-page {
+
+  background: #f8fafc;
+
+  min-height: 100vh;
+
+  padding: 2rem;
+}
+
+.history-page h1 {
+
+  color: #2563eb;
+
+  margin-bottom: 2rem;
+}
+
+.history-item {
+
+  background: white;
+
+  padding: 1.5rem;
+
+  border-radius: 15px;
+
+  margin-bottom: 1rem;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.05);
+}

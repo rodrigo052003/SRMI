@@ -1,0 +1,29 @@
+.notifications-page {
+
+  background: #f8fafc;
+
+  min-height: 100vh;
+
+  padding: 2rem;
+}
+
+.notifications-page h1 {
+
+  color: #2563eb;
+
+  margin-bottom: 2rem;
+}
+
+.notification-item {
+
+  background: white;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  margin-bottom: 1rem;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.05);
+}

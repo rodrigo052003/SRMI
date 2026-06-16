@@ -1,0 +1,33 @@
+.request-card {
+
+  background:white;
+
+  padding:1rem;
+
+  border-radius:15px;
+
+  margin-bottom:1rem;
+
+  box-shadow:
+  0 5px 20px rgba(0,0,0,.06);
+}
+
+.request-actions{
+
+  margin-top:15px;
+
+  display:flex;
+
+  gap:10px;
+}
+
+.request-actions button{
+
+  border:none;
+
+  padding:10px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+}

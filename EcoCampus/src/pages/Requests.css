@@ -1,0 +1,44 @@
+.requests-page {
+
+  background: #f8fafc;
+
+  min-height: 100vh;
+
+  padding: 2rem;
+}
+
+.requests-page h1 {
+
+  color: #2563eb;
+
+  margin-bottom: 2rem;
+}
+
+.request-item {
+
+  background: white;
+
+  padding: 1.5rem;
+
+  border-radius: 15px;
+
+  margin-bottom: 1rem;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.05);
+}
+
+.request-item span {
+
+  display: inline-block;
+
+  margin-top: 10px;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+}

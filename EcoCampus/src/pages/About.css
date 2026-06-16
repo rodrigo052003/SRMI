@@ -1,0 +1,27 @@
+.about-page {
+
+  min-height: 100vh;
+
+  background: #f8fafc;
+
+  padding: 2rem;
+}
+
+.about-page h1 {
+    
+    color: #2563eb;
+
+    margin-bottom: 2rem;
+}
+
+.about-card {
+
+  background: white;
+
+  padding: 2rem;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.05);
+}

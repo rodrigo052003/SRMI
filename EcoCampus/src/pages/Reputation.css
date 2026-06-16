@@ -1,0 +1,38 @@
+.reputation-page {
+
+  min-height: 100vh;
+
+  background: #f8fafc;
+
+  padding: 2rem;
+}
+
+.reputation-page h1 {
+
+  color: #2563eb;
+
+  margin-bottom: 2rem;
+}
+
+.reputation-card,
+.rules-card {
+
+  background: white;
+
+  padding: 2rem;
+
+  border-radius: 15px;
+
+  margin-bottom: 1.5rem;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.05);
+}
+
+.reputation-card h2, 
+.rules-card h2 { 
+
+    color: #2563eb;
+
+    margin-bottom: 2rem;
+}
