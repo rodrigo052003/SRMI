@@ -1,34 +1,48 @@
 .material-card {
-
-  background: white;
-
+  background: var(--surface);
   border-radius: 15px;
-
   padding: 1rem;
-
   margin-bottom: 1rem;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  box-shadow:
-  0 5px 20px rgba(0,0,0,.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 20px var(--shadow-color);
 }
 
-.actions{
-  display:flex;
-  gap:10px;
+.material-card h3 {
+  color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
-.actions button{
-  border:none;
-  padding:10px 14px;
-  border-radius:8px;
-  cursor:pointer;
+.material-card p {
+  color: var(--text-muted);
+  font-size: .9rem;
 }
 
-.danger{
-  background:#ef4444;
-  color:white;
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  transition: background .2s;
+}
+
+.actions button:hover {
+  background: var(--primary-dark);
+}
+
+.danger {
+  background: #ef4444 !important;
+  color: white;
+}
+
+.danger:hover {
+  background: #dc2626 !important;
 }

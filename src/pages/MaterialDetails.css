@@ -1,16 +1,16 @@
 .details-page {
   padding: 40px;
-  background: #f8fafc;
+  background: var(--app-bg);
   min-height: 100vh;
 }
 
 .details-card {
-  background: white;
+  background: var(--surface);
   border-radius: 20px;
   padding: 30px;
   display: flex;
   gap: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  box-shadow: 0 8px 20px var(--shadow-color);
   max-width: 800px;
   margin: 0 auto;
 }
@@ -21,17 +21,13 @@
   align-items: flex-start;
 }
 
-.details-info {
-  flex: 1;
-}
-
 .details-info h1 {
-  color: #1e293b;
+  color: var(--text-primary);
   margin-bottom: 10px;
 }
 
 .details-info p {
-  color: #475569;
+  color: var(--text-muted);
   margin-bottom: 15px;
 }
 
@@ -43,8 +39,8 @@
 }
 
 .badge {
-  background: #dbeafe;
-  color: #2563eb;
+  background: var(--primary-soft);
+  color: var(--primary);
   padding: 6px 14px;
   border-radius: 20px;
   font-size: .9rem;
@@ -57,7 +53,7 @@
 }
 
 .details-owner {
-  color: #64748b;
+  color: var(--text-muted);
   margin-bottom: 20px;
 }
 
@@ -69,7 +65,7 @@
 
 .details-actions button {
   border: none;
-  background: #2563eb;
+  background: var(--primary);
   color: white;
   padding: 12px 24px;
   border-radius: 10px;
@@ -80,7 +76,7 @@
 }
 
 .details-actions button:hover {
-  background: #1d4ed8;
+  background: var(--primary-dark);
 }
 
 .unavailable {
@@ -89,9 +85,15 @@
 }
 
 @media (max-width: 600px) {
+  .details-page {
+    padding: 20px 14px;
+  }
+
   .details-card {
     flex-direction: column;
+    padding: 20px;
   }
+
   .details-image {
     font-size: 4rem;
   }

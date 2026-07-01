@@ -1,18 +1,16 @@
 .dashboard-card {
-
-  background: white;
-
+  background: var(--surface);
   border-radius: 20px;
-
   padding: 2rem;
-
   text-align: center;
-
-  box-shadow:
-  0 8px 25px rgba(0,0,0,.08);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
-.dashboard-card h2{
-  color:#2563eb;
-  font-size:2rem;
+.dashboard-card h2 {
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.dashboard-card p {
+  color: var(--text-muted);
 }

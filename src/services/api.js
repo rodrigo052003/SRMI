@@ -34,6 +34,42 @@ export async function register(name, email, password) {
   return { ok: res.ok, data: await res.json() };
 }
 
+export async function forgotPassword(email) {
+  const res = await fetch(`${BASE_URL}/forgot-password`, {
+    method: "POST",
+    headers: getHeaders(),
+    body: JSON.stringify({ email }),
+  });
+  return { ok: res.ok, data: await res.json() };
+}
+
+export async function resetPassword(reset_token, password) {
+  const res = await fetch(`${BASE_URL}/reset-password`, {
+    method: "POST",
+    headers: getHeaders(),
+    body: JSON.stringify({ reset_token, password }),
+  });
+  return { ok: res.ok, data: await res.json() };
+}
+
+// ---------- Profile ----------
+
+export async function getProfile() {
+  const res = await fetch(`${BASE_URL}/profile`, {
+    headers: getHeaders(true),
+  });
+  return res.json();
+}
+
+export async function updateProfile(payload) {
+  const res = await fetch(`${BASE_URL}/profile`, {
+    method: "PUT",
+    headers: getHeaders(true),
+    body: JSON.stringify(payload),
+  });
+  return { ok: res.ok, data: await res.json() };
+}
+
 // ---------- Materials ----------
 
 export async function getMaterials() {

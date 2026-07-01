@@ -7,10 +7,12 @@
 
 .auth-container {
   min-height: 100vh;
+  width: 100%;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1.2rem;
 
   background: linear-gradient(
       135deg,
@@ -23,7 +25,7 @@
   width: 100%;
   max-width: 450px;
 
-  background: white;
+  background: var(--surface);
 
   padding: 2rem;
 
@@ -39,17 +41,19 @@
 }
 
 .auth-header h1 {
-  color: #2563eb;
+  color: var(--primary);
   margin-bottom: .5rem;
 }
 
 .auth-header p {
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .auth-switch {
   display: flex;
   margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .auth-switch button {
@@ -58,7 +62,8 @@
   border: none;
   padding: 12px;
 
-  background: #f1f5f9;
+  background: var(--surface-alt);
+  color: var(--text-secondary);
 
   cursor: pointer;
   font-weight: bold;
@@ -67,7 +72,7 @@
 }
 
 .auth-switch button.active {
-  background: #2563eb;
+  background: var(--primary);
   color: white;
 }
 
@@ -81,7 +86,9 @@
 .auth-form select {
   padding: 14px;
 
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  color: var(--text-primary);
 
   border-radius: 10px;
 
@@ -92,13 +99,13 @@
 .auth-form select:focus {
   outline: none;
 
-  border-color: #2563eb;
+  border-color: var(--primary);
 }
 
 .auth-form button {
   border: none;
 
-  background: #2563eb;
+  background: var(--primary);
 
   color: white;
 
@@ -114,7 +121,7 @@
 }
 
 .auth-form button:hover {
-  background: #1d4ed8;
+  background: var(--primary-dark);
 }
 
 .auth-form a {
@@ -122,7 +129,61 @@
 
   text-decoration: none;
 
-  color: #2563eb;
+  color: var(--primary);
 
   font-size: 0.9rem;
+}
+
+.link-btn {
+  background: none !important;
+  color: var(--primary) !important;
+  font-size: .9rem;
+  padding: 6px !important;
+  font-weight: 500;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+  background: none !important;
+}
+
+.auth-help-text {
+  color: var(--text-muted);
+  font-size: .9rem;
+  text-align: center;
+}
+
+.auth-info {
+  font-size: .88rem;
+  padding: .6rem .8rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.auth-info.success {
+  background: rgba(34, 197, 94, .12);
+  color: #16a34a;
+}
+
+.auth-info.error {
+  background: rgba(220, 38, 38, .12);
+  color: #dc2626;
+}
+
+/* ── Responsividade ── */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.4rem;
+    border-radius: 16px;
+  }
+
+  .auth-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .auth-form input,
+  .auth-form button {
+    padding: 12px;
+    font-size: .95rem;
+  }
 }

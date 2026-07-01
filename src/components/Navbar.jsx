@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import { useTheme } from "../context/ThemeContext";
 import "./Navbar.css";
 
 const BASE_URL = "http://127.0.0.1:5000";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [nivelData, setNivelData] = useState(null);
   const timeoutRef = useRef(null);
   const profileRef = useRef(null);
@@ -54,107 +59,158 @@ export default function Navbar() {
     setMenuOpen(true);
   };
 
+  function handleLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    setProfileOpen(false);
+    navigate("/");
+  }
+
   return (
     <nav className="navbar">
-      <div className="logo">EcoCampus</div>
+      <div className="navbar-top">
+        <div className="logo">EcoCampus</div>
 
-      <div className="nav-links">
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/marketplace">Marketplace</Link>
-        <Link to="/my-materials">Meus Materiais</Link>
+        <button
+          className="mobile-toggle"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Abrir menu"
+        >
+          ☰
+        </button>
+      </div>
+
+      <div className={`nav-links ${mobileOpen ? "open" : ""}`}>
+        <Link to="/dashboard" onClick={() => setMobileOpen(false)}>Dashboard</Link>
+        <Link to="/marketplace" onClick={() => setMobileOpen(false)}>Marketplace</Link>
+        <Link to="/my-materials" onClick={() => setMobileOpen(false)}>Meus Materiais</Link>
 
         <div
           className="dropdown-container"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <button className="dropdown-button">Mais ▼</button>
+          <button
+            className="dropdown-button"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            Mais ▼
+          </button>
 
           {menuOpen && (
             <div className="dropdown-menu">
-              <Link to="/requests">Solicitações</Link>
-              <Link to="/notifications">Notificações</Link>
-              <Link to="/history">Histórico</Link>
-              <Link to="/reputation">Reputação</Link>
-              <Link to="/about">Sobre</Link>
-              <Link to="/help">Ajuda</Link>
+              <Link to="/requests" onClick={() => setMobileOpen(false)}>Solicitações</Link>
+              <Link to="/notifications" onClick={() => setMobileOpen(false)}>Notificações</Link>
+              <Link to="/history" onClick={() => setMobileOpen(false)}>Histórico</Link>
+              <Link to="/reputation" onClick={() => setMobileOpen(false)}>Reputação</Link>
+              <Link to="/about" onClick={() => setMobileOpen(false)}>Sobre</Link>
+              <Link to="/help" onClick={() => setMobileOpen(false)}>Ajuda</Link>
             </div>
           )}
         </div>
+
+        {/* Ações visíveis apenas no menu mobile */}
+        <button className="mobile-theme-btn" onClick={toggleTheme}>
+          {theme === "dark" ? "☀️ Modo claro" : "🌙 Modo escuro"}
+        </button>
+        <button className="mobile-logout-btn" onClick={handleLogout}>
+          Sair
+        </button>
       </div>
 
-      {/* Avatar de perfil */}
-      <div className="user-menu" ref={profileRef}>
-        <button className="avatar-btn" onClick={handleProfileClick} title={userName}>
-          {initials}
+      <div className="navbar-actions">
+        {/* Botão de tema claro/escuro */}
+        <button
+          className="theme-toggle-btn"
+          onClick={toggleTheme}
+          title={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
+        >
+          {theme === "dark" ? "☀️" : "🌙"}
         </button>
 
-        {profileOpen && (
-          <div className="profile-modal">
-            <div className="profile-modal-header">
-              <div className="avatar-lg">{initials}</div>
-              <div>
-                <strong>{userName}</strong>
-                <p>Universidade Federal</p>
-              </div>
-            </div>
+        {/* Avatar de perfil */}
+        <div className="user-menu" ref={profileRef}>
+          <button className="avatar-btn" onClick={handleProfileClick} title={userName}>
+            {initials}
+          </button>
 
-            <hr className="modal-divider" />
-
-            {/* Seção de Nível */}
-            {!nivelData && (
-              <p className="modal-loading">Carregando nível...</p>
-            )}
-            {nivelData === "erro" && (
-              <p className="modal-error">Erro ao carregar nível.</p>
-            )}
-            {nivelData && nivelData !== "erro" && (
-              <div className="modal-nivel">
-                <div className="modal-nivel-top">
-                  <span className="modal-badge">{nivelData.nivel?.badge}</span>
-                  <div>
-                    <strong style={{ color: nivelData.nivel?.cor }}>
-                      {nivelData.nivel?.nivel}
-                    </strong>
-                    <span className="modal-pts">{nivelData.pontos} pontos</span>
-                  </div>
+          {profileOpen && (
+            <div className="profile-modal">
+              <div className="profile-modal-header">
+                <div className="avatar-lg">{initials}</div>
+                <div>
+                  <strong>{userName}</strong>
+                  <p>Universidade Federal</p>
                 </div>
-
-                {nivelData.progresso?.proximo && (
-                  <>
-                    <div className="modal-progress-label">
-                      <small>Próximo: {nivelData.progresso.proximo.badge} {nivelData.progresso.proximo.nivel}</small>
-                      <small>{nivelData.progresso.faltam} pts</small>
-                    </div>
-                    <div className="modal-progress-bar">
-                      <div
-                        className="modal-progress-fill"
-                        style={{
-                          width: `${nivelData.progresso.percent}%`,
-                          background: nivelData.nivel?.cor,
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
-                {!nivelData.progresso?.proximo && (
-                  <p className="modal-max">🏆 Nível máximo atingido!</p>
-                )}
               </div>
-            )}
 
-            <hr className="modal-divider" />
+              <hr className="modal-divider" />
 
-            <div className="modal-actions">
-              <Link to="/profile" onClick={() => setProfileOpen(false)}>
-                Ver perfil completo
-              </Link>
-              <Link to="/gamification" onClick={() => setProfileOpen(false)}>
-                Ver conquistas
-              </Link>
+              {/* Seção de Nível */}
+              {!nivelData && (
+                <p className="modal-loading">Carregando nível...</p>
+              )}
+              {nivelData === "erro" && (
+                <p className="modal-error">Erro ao carregar nível.</p>
+              )}
+              {nivelData && nivelData !== "erro" && (
+                <div className="modal-nivel">
+                  <div className="modal-nivel-top">
+                    <span className="modal-badge">{nivelData.nivel?.badge}</span>
+                    <div>
+                      <strong style={{ color: nivelData.nivel?.cor }}>
+                        {nivelData.nivel?.nivel}
+                      </strong>
+                      <span className="modal-pts">{nivelData.pontos} pontos</span>
+                    </div>
+                  </div>
+
+                  {nivelData.progresso?.proximo && (
+                    <>
+                      <div className="modal-progress-label">
+                        <small>Próximo: {nivelData.progresso.proximo.badge} {nivelData.progresso.proximo.nivel}</small>
+                        <small>{nivelData.progresso.faltam} pts</small>
+                      </div>
+                      <div className="modal-progress-bar">
+                        <div
+                          className="modal-progress-fill"
+                          style={{
+                            width: `${nivelData.progresso.percent}%`,
+                            background: nivelData.nivel?.cor,
+                          }}
+                        />
+                      </div>
+                    </>
+                  )}
+                  {!nivelData.progresso?.proximo && (
+                    <p className="modal-max">🏆 Nível máximo atingido!</p>
+                  )}
+                </div>
+              )}
+
+              <hr className="modal-divider" />
+
+              <div className="modal-actions">
+                <Link to="/profile" onClick={() => setProfileOpen(false)}>
+                  Ver perfil completo
+                </Link>
+                <Link to="/profile?edit=1" onClick={() => setProfileOpen(false)}>
+                  Editar perfil
+                </Link>
+                <Link to="/gamification" onClick={() => setProfileOpen(false)}>
+                  Ver conquistas
+                </Link>
+              </div>
+
+              <hr className="modal-divider" />
+
+              <button className="modal-logout-btn" onClick={handleLogout}>
+                Sair da conta
+              </button>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </nav>
   );

@@ -1,38 +1,31 @@
 .reputation-page {
-
   min-height: 100vh;
-
-  background: #f8fafc;
-
+  background: var(--app-bg);
   padding: 2rem;
 }
 
 .reputation-page h1 {
-
-  color: #2563eb;
-
+  color: var(--primary);
   margin-bottom: 2rem;
 }
 
 .reputation-card,
 .rules-card {
-
-  background: white;
-
+  background: var(--surface);
   padding: 2rem;
-
   border-radius: 15px;
-
   margin-bottom: 1.5rem;
-
-  box-shadow:
-    0 5px 15px rgba(0,0,0,.05);
+  box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-.reputation-card h2, 
-.rules-card h2 { 
+.reputation-card h2,
+.rules-card h2 {
+  color: var(--primary);
+  margin-bottom: 2rem;
+}
 
-    color: #2563eb;
-
-    margin-bottom: 2rem;
+@media (max-width: 600px) {
+  .reputation-page {
+    padding: 1.2rem;
+  }
 }

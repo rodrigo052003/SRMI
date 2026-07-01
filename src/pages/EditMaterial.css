@@ -1,109 +1,74 @@
 .edit-material-page {
-
   min-height: 100vh;
-
-  background: #f8fafc;
-
+  background: var(--app-bg);
   padding: 2rem;
-
   display: flex;
-
   justify-content: center;
-
   align-items: flex-start;
 }
 
 .edit-material-card {
-
   width: 100%;
-
   max-width: 700px;
-
-  background: white;
-
+  background: var(--surface);
   padding: 2rem;
-
   border-radius: 20px;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.08);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .edit-material-card h1 {
-
-  color: #2563eb;
-
+  color: var(--primary);
   margin-bottom: 1.5rem;
 }
 
 .edit-material-form {
-
   display: flex;
-
   flex-direction: column;
-
   gap: 1rem;
 }
 
 .edit-material-form input,
 .edit-material-form textarea,
 .edit-material-form select {
-
   padding: 12px;
-
-  border: 1px solid #cbd5e1;
-
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-
   font-size: 1rem;
+  background: var(--surface-alt);
+  color: var(--text-primary);
 }
 
 .edit-material-form textarea {
-
   resize: vertical;
-
   min-height: 120px;
 }
 
 .edit-material-form h1 {
-
-  color: #2563eb;
+  color: var(--primary);
 }
 
 .save-btn {
-
-  background: #2563eb;
-
+  background: var(--primary);
   color: white;
-
   border: none;
-
   padding: 14px;
-
   border-radius: 10px;
-
   cursor: pointer;
-
   font-weight: 600;
-
   transition: .2s;
 }
 
 .save-btn:hover {
-
+  background: var(--primary-dark);
   transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-
   .edit-material-page {
-
     padding: 1rem;
   }
 
   .edit-material-card {
-
     padding: 1.5rem;
   }
-
 }

@@ -1,63 +1,53 @@
 .form-page {
-
-  display:flex;
-  justify-content:center;
-
-  padding:40px;
-
-  background:#f8fafc;
-
-  min-height:100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background: var(--app-bg);
+  min-height: 100vh;
 }
 
 .form-card {
-
-  width:100%;
-  max-width:700px;
-
-  background:white;
-
-  padding:30px;
-
-  border-radius:20px;
-
-  display:flex;
-  flex-direction:column;
-
-  gap:15px;
-
-  box-shadow:
-  0 8px 20px rgba(0,0,0,.08);
+  width: 100%;
+  max-width: 700px;
+  background: var(--surface);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 .form-card input,
 .form-card textarea,
 .form-card select {
-
-  padding:12px;
-
-  border:1px solid #cbd5e1;
-
-  border-radius:10px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--surface-alt);
+  color: var(--text-primary);
 }
 
 .form-card button {
-
-  background:#2563eb;
-
-  color:white;
-
-  border:none;
-
-  padding:14px;
-
-  border-radius:10px;
-
-  cursor:pointer;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .form-card h1 {
+  color: var(--primary);
+}
 
-  color: #2563eb;
-  
+@media (max-width: 600px) {
+  .form-page {
+    padding: 20px 12px;
+  }
+
+  .form-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
 }

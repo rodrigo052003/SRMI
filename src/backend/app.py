@@ -9,6 +9,7 @@ from routes.materials     import materials_bp
 from routes.requests      import requests_bp
 from routes.ranking       import ranking_bp
 from routes.gamification  import gamification_bp
+from routes.profile       import profile_bp
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +21,7 @@ app.register_blueprint(materials_bp)
 app.register_blueprint(requests_bp)
 app.register_blueprint(ranking_bp)
 app.register_blueprint(gamification_bp)
+app.register_blueprint(profile_bp)
 
 @app.route("/")
 def home():

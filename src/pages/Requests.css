@@ -1,44 +1,37 @@
 .requests-page {
-
-  background: #f8fafc;
-
+  background: var(--app-bg);
   min-height: 100vh;
-
   padding: 2rem;
 }
 
 .requests-page h1 {
-
-  color: #2563eb;
-
+  color: var(--primary);
   margin-bottom: 2rem;
 }
 
 .request-item {
-
-  background: white;
-
+  background: var(--surface);
   padding: 1.5rem;
-
   border-radius: 15px;
-
   margin-bottom: 1rem;
-
-  box-shadow:
-    0 5px 15px rgba(0,0,0,.05);
+  box-shadow: 0 5px 15px var(--shadow-color);
 }
 
 .request-item span {
-
   display: inline-block;
-
   margin-top: 10px;
-
-  background: #dbeafe;
-
-  color: #2563eb;
-
+  background: var(--primary-soft);
+  color: var(--primary);
   padding: 5px 10px;
-
   border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .requests-page {
+    padding: 1.2rem;
+  }
+
+  .request-item {
+    padding: 1rem;
+  }
 }
