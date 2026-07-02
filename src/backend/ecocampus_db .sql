@@ -2,7 +2,7 @@
 --  EcoCampus — Banco de Dados Completo
 --  Plataforma de troca, empréstimo e doação de materiais
 --  acadêmicos entre estudantes e professores.
---
+-- Professora, coloquei esses comentários pra ficar melhor organizado e melhor entender enquanto estava implementando, pois fiz aos poucos
 --  Banco: MySQL 8+
 --  Versão: 1.0
 -- ============================================================
