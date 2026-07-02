@@ -11,6 +11,8 @@ export default function MaterialDetails() {
   const [material, setMaterial] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const userId = parseInt(localStorage.getItem("userId"));
+
   useEffect(() => {
     fetch(`http://127.0.0.1:5000/materials/${id}`)
       .then(res => res.json())
@@ -46,6 +48,8 @@ export default function MaterialDetails() {
   if (loading) return <><Navbar /><p style={{ padding: "2rem" }}>Carregando...</p></>;
   if (!material) return <><Navbar /><p style={{ padding: "2rem" }}>Material não encontrado.</p></>;
 
+  const isOwner = material.owner_id === userId;
+
   return (
     <>
       <Navbar />
@@ -68,22 +72,21 @@ export default function MaterialDetails() {
               Proprietário: <strong>{material.owner}</strong>
             </p>
 
-            {material.status === "Disponível" && (
+            {isOwner && (
+              <p style={{ color: "var(--text-muted)", fontStyle: "italic" }}>
+                Este é o seu material.
+              </p>
+            )}
+
+            {!isOwner && material.status === "Disponível" && (
               <div className="details-actions">
-                {material.transaction === "Troca" || material.transaction === "Doação" ? (
-                  <button onClick={() => handleRequest(material.transaction)}>
-                    Solicitar {material.transaction}
-                  </button>
-                ) : null}
-                {material.transaction === "Empréstimo" ? (
-                  <button onClick={() => handleRequest("Empréstimo")}>
-                    Solicitar Empréstimo
-                  </button>
-                ) : null}
+                <button onClick={() => handleRequest(material.transaction)}>
+                  Solicitar {material.transaction}
+                </button>
               </div>
             )}
 
-            {material.status !== "Disponível" && (
+            {!isOwner && material.status !== "Disponível" && (
               <p className="unavailable">
                 Este material não está disponível no momento.
               </p>
